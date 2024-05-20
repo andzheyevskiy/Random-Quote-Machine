@@ -1,0 +1,111 @@
+///// COMMON USE MIXINS /////
+
+@mixin media($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+
+    }
+}
+
+@mixin box-sizing($value){
+    -webkit-box-sizing: $value;
+    -moz-box-sizing: $value;
+    box-sizing: $value;
+}
+
+  @mixin box-shadow($value){
+    -webkit-box-shadow: $value;
+    -moz-box-shadow: $value;
+    box-shadow: $value;
+}
+
+  @mixin border-radius($value){
+    -moz-border-radius: $value;
+    -webkit--radius: $value;
+    border-radius: $value;
+}
+
+  @mixin background-size($value){
+    -o-background-size: $value;
+    -webkit-background-size: $value;
+    -moz-background-size: $value;
+    background-size: $value;
+}
+///// PERSONAL MIXINS ///////
+  @mixin box-size($value){
+    height: $value;
+    width: $value;
+  }
+  @mixin absolute($bot,$left){
+    position: absolute;
+    bottom: $bot;
+    left: $left;
+  }
+  @mixin totalsize($height,$width){
+    height: $height;
+    width: $width;
+  }
+///// CSS /////
+$quote-box-background: rgb(211, 211, 211);
+
+
+*{
+  @include box-sizing(border-box);
+}
+
+body{
+  background-color: white;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#quote-box{
+  width: 95%;
+  max-width: 700px;
+  background-color: $quote-box-background;
+  padding: 40px 20px;
+  @include border-radius(10px);
+  position: relative
+}
+h1{
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+#text{
+  width: 100%;
+  font-size: 24px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.buttons-wrapper{
+  display: flex;
+  justify-content: space-between
+}
+#tweet-quote{
+  display: block;
+  @include box-size(40px);
+  @include border-radius(10px);
+  padding: 5px;
+  border: 1px solid black;
+}
+#tweet-quote img{
+  @include box-size(95%)
+}
+#new-quote{
+  @include totalsize(40px,150px);
+  @include border-radius(10px);
+  font-size: 18px;
+}
+
+#author{
+text-align: end;
+margin-bottom: 20px;
+}
+#author::before{
+  content: "Author: ";
+}
+
